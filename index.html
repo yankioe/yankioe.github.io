@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>yanki's homepage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/a860a211d3.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg: #f7f4ef;
+      --surface: #eeebe4;
+      --border: #d8d3c8;
+      --text: #2a2620;
+      --text-muted: #7a7268;
+      --accent: #7c5c3e;
+      --accent-light: #c8a882;
+      --link: #5a4a3a;
+    }
+
+    [data-theme="dark"] {
+      --bg: #1a1815;
+      --surface: #221f1b;
+      --border: #3a3630;
+      --text: #e8e3da;
+      --text-muted: #8a8278;
+      --accent: #c8a882;
+      --accent-light: #7c5c3e;
+      --link: #c8a882;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; right: 0; left: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: flex-end;
+      padding: 1rem 2rem;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+    .page {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+    }
+
+    header {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 2px solid var(--border);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.1s forwards;
+    }
+
+    .header-text { flex: 1; }
+
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 1.75rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      color: var(--text);
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.2s forwards;
+    }
+
+    .pronouns {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.2rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.25s forwards;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease 0.35s forwards;
+    }
+
+    .social-icons a {
+      color: var(--text-muted);
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .social-icons a:hover { color: var(--accent); }
+
+    .section {
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .section.visible { opacity: 1; transform: none; }
+
+    .section-title {
+      font-family: 'Lora', serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .section-body p {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-body p:last-child { margin-bottom: 0; }
+
+    .pub {
+      border-left: 2px solid var(--accent-light);
+      padding: 0.6rem 0 0.6rem 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .pub-venue {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+
+    .pub a {
+      color: var(--link);
+      text-decoration: none;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .pub a:hover { border-color: var(--accent-light); }
+
+    .edu-grid {
+      display: grid;
+      gap: 1.25rem;
+    }
+
+    .edu-item {}
+
+    .edu-uni {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .edu-degree {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .edu-year {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 480px) {
+      header { flex-direction: column; gap: 1.25rem; }
+      h1 { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <button id="themeToggle" class="theme-toggle" title="Toggle theme" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </nav>
+
+  <div class="page">
+    <header>
+      <img class="avatar" src="assets/img/avatar.jpeg">
+      <div class="header-text">
+        <h1>Yankı <span style="font-style:italic; font-weight:400;">(jaŋkɯ)</span></h1>
+        <p class="pronouns">she/her</p>
+        <div class="social-icons">
+          <a href="mailto:yanki.oeztuerk@student.uni-tuebingen.de" title="Email"><i class="fa-solid fa-envelope"></i></a>
+          <a href="https://github.com/yankioe" title="GitHub"><i class="fa-brands fa-github"></i></a>
+        </div>
+      </div>
+    </header>
+
+    <div class="section" id="about">
+      <div class="section-body">
+        <p>I am a linguist that enjoys using the computer as a tool.</p>
+        <p>I care about users of marginalized languages and their right to use language technologies as capable and .</p>
+        <div class="pub">
+          <p class="pub-venue">AfricaNLP 2026</p>
+          <a href="https://aclanthology.org/2026.africanlp-main.12/">Synthetic Data Generation Pipeline for Low-Resource Swahili Sentiment Analysis: Multi-LLM Judging with Human Validation</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="education">
+      <h2 class="section-title">Education</h2>
+      <div class="section-body">
+        <div class="edu-grid">
+          <div class="edu-item">
+            <p class="edu-uni">University of Tübingen</p>
+            <p class="edu-degree">M.A. Computational Linguistics</p>
+            <p class="edu-year">expected 2026</p>
+          </div>
+          <div class="edu-item">
+            <p class="edu-uni">Boğaziçi University</p>
+            <p class="edu-degree">B.A. Linguistics</p>
+            <p class="edu-year">2023</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const btn = document.getElementById('themeToggle');
+      const icon = btn.querySelector('i');
+
+      function setTheme(isDark) {
+        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
+        icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      }
+
+      const saved = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(saved ? saved === 'dark' : prefersDark);
+
+      btn.addEventListener('click', function () {
+        setTheme(document.documentElement.getAttribute('data-theme') !== 'dark');
+      });
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.section').forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
+</body>
+</html>
