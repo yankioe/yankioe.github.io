@@ -21,7 +21,7 @@ body.theme-luka *::after {
 :root {
   --luka-bg: #faf9f7;
   --luka-text: #3d3929;
-  --luka-accent: #c2714f;
+  --luka-accent: #70a920;
   --luka-secondary: #8c8577;
   --luka-border: rgba(194, 113, 79, 0.2);
   --luka-shadow: rgba(194, 113, 79, 0.15);
@@ -34,7 +34,7 @@ body.theme-luka *::after {
   :root:not([data-theme="light"]) {
     --luka-bg: #1a1917;
     --luka-text: #d1cec7;
-    --luka-accent: #e28a67;
+    --luka-accent: #70a920;
     --luka-secondary: #9b9488;
     --luka-border: rgba(226, 138, 103, 0.2);
     --luka-shadow: rgba(0, 0, 0, 0.3);
@@ -47,7 +47,7 @@ body.theme-luka *::after {
 [data-theme="dark"] {
   --luka-bg: #1a1917;
   --luka-text: #d1cec7;
-  --luka-accent: #e28a67;
+  --luka-accent: #70a920;
   --luka-secondary: #9b9488;
   --luka-border: rgba(226, 138, 103, 0.2);
   --luka-shadow: rgba(0, 0, 0, 0.3);
@@ -59,7 +59,7 @@ body.theme-luka *::after {
 [data-theme="light"] {
   --luka-bg: #faf9f7;
   --luka-text: #3d3929;
-  --luka-accent: #c2714f;
+  --luka-accent: #70a920;
   --luka-secondary: #8c8577;
   --luka-border: rgba(194, 113, 79, 0.2);
   --luka-shadow: rgba(194, 113, 79, 0.15);
